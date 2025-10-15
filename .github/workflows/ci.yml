@@ -1,0 +1,29 @@
+name: CI - Comve App Frontend
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🧭 Checkout del código
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 📦 Instalar dependencias
+        run: npm install
+
+      - name: 🧪 Verificar build de Expo
+        run: npx expo-cli doctor || true
+
+      - name: 🧱 Compilar proyecto
+        run: npx expo build:web
