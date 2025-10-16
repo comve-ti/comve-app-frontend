@@ -1,4 +1,4 @@
-name: CI/CD Comve App
+name: CI/CD Frontend
 
 on:
   push:
@@ -11,18 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ⬇️ Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: ⚡ Setup Node.js
+      - name: Use Node.js 18
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 18
 
-      - name: 📦 Instalar dependencias
-        run: npm install
+      - name: Instalar dependencias
+        working-directory: ./comve-app-frontend
+        run: npm ci
 
-     - name: 🧱 Compilar proyecto
-  run: npx expo export:web
-      
-
+      - name: Compilar proyecto Expo
+        working-directory: ./comve-app-frontend
+        run: npx expo export --platform web
