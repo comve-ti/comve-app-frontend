@@ -20,9 +20,10 @@ jobs:
           node-version: 18
 
       - name: Instalar dependencias
-        working-directory: ./comve-app-frontend
         run: npm ci
-
-      - name: Compilar proyecto Expo
         working-directory: ./comve-app-frontend
-        run: npx expo export --platform web
+
+      - name: 🧱 Compilar proyecto
+        run: npx expo export:web
+        working-directory: ./  # ruta donde está tu package.json
+
