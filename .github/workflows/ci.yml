@@ -1,0 +1,29 @@
+name: CI/CD Frontend
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependencias
+        run: npm ci
+        working-directory: ./comve-app-frontend
+
+      - name: 🧱 Compilar proyecto
+        run: npx expo export:web
+        working-directory: ./  # ruta donde está tu package.json
+
