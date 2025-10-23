@@ -1,4 +1,4 @@
-name: CI/CD Frontend
+name: CI/CD Frontend (Next.js)
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
         run: npm ci
         working-directory: ./comve-app-frontend
 
-      - name: 🧱 Compilar proyecto
-        run: npx expo export:web
-        working-directory: ./  # ruta donde está tu package.json
+      - name: 🧱 Compilar proyecto Next.js
+        run: npm run build
+        working-directory: ./comve-app-frontend
 
