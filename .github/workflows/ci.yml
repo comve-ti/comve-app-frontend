@@ -1,4 +1,4 @@
-name: CI/CD Frontend (Next.js)
+name: CI/CD Frontend
 
 on:
   push:
@@ -21,9 +21,6 @@ jobs:
 
       - name: Instalar dependencias
         run: npm ci
-        working-directory: ./comve-app-frontend
 
       - name: 🧱 Compilar proyecto Next.js
         run: npm run build
-        working-directory: ./comve-app-frontend
-
